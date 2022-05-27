@@ -1,4 +1,4 @@
-const options = {
+const issues_info = {
   method: "GET",
   headers: {
     "X-RapidAPI-Host": "priaid-symptom-checker-v1.p.rapidapi.com",
@@ -8,7 +8,7 @@ const options = {
 
 fetch(
   "https://priaid-symptom-checker-v1.p.rapidapi.com/issues/11/info?language=en-gb",
-  options
+  issues_info
 )
   .then((response) => response.json())
   .then((response) => console.log(response))

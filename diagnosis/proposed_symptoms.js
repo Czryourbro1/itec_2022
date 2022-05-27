@@ -1,4 +1,4 @@
-const options = {
+const proposed_symptoms = {
   method: "GET",
   headers: {
     "X-RapidAPI-Host": "priaid-symptom-checker-v1.p.rapidapi.com",
@@ -8,7 +8,7 @@ const options = {
 
 fetch(
   "https://priaid-symptom-checker-v1.p.rapidapi.com/symptoms/proposed?gender=male&year_of_birth=1984&language=en-gb&symptoms=%5B234%2C11%5D",
-  options
+  proposed_symptoms
 )
   .then((response) => response.json())
   .then((response) => console.log(response))
