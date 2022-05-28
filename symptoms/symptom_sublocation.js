@@ -6,11 +6,13 @@ for (let k = 0; k < inputsymp.length; k++) {
   inputsymp[k].addEventListener("click", function () {
     if (inputsymp[k].checked) {
       idsymp = inputsymp[k].value;
+      chosen_symptom = inputsymp[k].textContent;
       getsymptom();
       for (let j = 0; j < inputsymp.length; j++) {
         if (k != j) inputsymp[j].disabled = true;
       }
     } else {
+      //location.reload();
       for (let q = 0; q < inputsymp.length; q++) {
         inputsymp[q].disabled = false;
       }
@@ -47,6 +49,7 @@ async function getsymptom() {
       symptom_body_sublocation.name = data[i].HasRedFlag;
       symptom_body_sublocation.id = "symptom_body_sublocation";
       symptom_body_sublocation.innerHTML = data[i].Name;
+      console.log(data[i].Name);
       document
         .querySelector("#symptom_body_sublocation_div")
         .appendChild(symptom_body_sublocation);
@@ -58,7 +61,7 @@ async function getsymptom() {
         .appendChild(label);
     }
 
-    let script = document.createElement("script");
+    script = document.createElement("script");
     script.src = "symptoms/redflag_pacient.js";
     document.body.appendChild(script);
     script = document.createElement("script");

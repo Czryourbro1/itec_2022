@@ -12,6 +12,7 @@ for (let k = 0; k < inputred.length; k++) {
           if (i != j) inputred[j].disabled = true;
         }
       } else {
+        //location.reload();
         for (let q = 0; q < inputred.length; q++) {
           if (inputred[q].checked) break;
           else {

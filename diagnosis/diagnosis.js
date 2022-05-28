@@ -4,7 +4,8 @@ more_diagnosis_body_sublocation_div = document.querySelector(".empty");
 valstring2 = "";
 year_of_birth = document.querySelector(".year");
 gender = document.querySelector("#gender");
-
+scripts = document.querySelectorAll("script");
+console.log(scripts);
 for (let k = 0; k < input_more_diagnosis.length; k++) {
   input_more_diagnosis[k].addEventListener("click", function () {
     if (input_more_diagnosis[k].checked) {
@@ -13,8 +14,28 @@ for (let k = 0; k < input_more_diagnosis.length; k++) {
       valstring2 = valstring2.replace(",", "%2C");
       console.log(valstring2);
       console.log(id_more_diagnosis);
-      if (valstring2.length > 2) getissues();
+      chosen_more_diagnosis = input_more_diagnosis[k].textContent;
+      if (valstring2.length > 0) {
+        for (let i = 0; i < scripts.length; i++) {
+          if (
+            scripts[i].src == "http://127.0.0.1:5500/health_issues/issues.js"
+          ) {
+            console.log("instruuuu");
+            scripts[i].remove();
+          }
+          console.log(scripts[i].src);
+        }
+        getissues();
+      }
     } else {
+      location.reload();
+      for (let i = 0; i < scripts.length; i++) {
+        if (scripts[i].src == "http://127.0.0.1:5500/health_issues/issues.js") {
+          console.log("instruuuu");
+          scripts[i].remove();
+        }
+        console.log(scripts[i].src);
+      }
       id_more_diagnosis = id_more_diagnosis.filter(
         (item) => item !== input_more_diagnosis[k].value
       );
@@ -23,7 +44,7 @@ for (let k = 0; k < input_more_diagnosis.length; k++) {
       valstring2 = id_more_diagnosis.toString();
       valstring2 = valstring2.replace(",", "%2C");
       console.log(valstring2);
-      if (valstring2.length > 2) getissues();
+      if (valstring2.length > 0) getissues();
       more_diagnosis_body_sublocation_div.remove();
       addempty();
     }
@@ -72,8 +93,9 @@ async function getissues() {
         .querySelector("#more_diagnosis_body_sublocation_div")
         .appendChild(label);
     }
-    let script = document.createElement("script");
+    script = document.createElement("script");
     script.src = "health_issues/issues.js";
     document.body.appendChild(script);
+    scripts = document.querySelectorAll("script");
   }
 }

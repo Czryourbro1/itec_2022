@@ -13,7 +13,8 @@ for (let k = 0; k < inputdiagnosis.length; k++) {
       valstring = valstring.replace(",", "%2C");
       console.log(valstring);
       console.log(id_diagnosis);
-      if (valstring.length > 2) getdiagnosis();
+      chosen_diagnosis = inputdiagnosis[k].textContent;
+      if (valstring.length > 0) getdiagnosis();
     } else {
       id_diagnosis = id_diagnosis.filter(
         (item) => item !== inputdiagnosis[k].value
@@ -23,7 +24,8 @@ for (let k = 0; k < inputdiagnosis.length; k++) {
       valstring = id_diagnosis.toString();
       valstring = valstring.replace(",", "%2C");
       console.log(valstring);
-      if (valstring.length > 2) getdiagnosis();
+      if (valstring.length > 0) getdiagnosis();
+      //location.reload();
       diagnosis_body_sublocation_div.remove();
       addempty();
     }
@@ -45,7 +47,7 @@ async function getdiagnosis() {
     "id",
     "diagnosis_body_sublocation_div"
   );
-  body_sublocation_div.appendChild(diagnosis_body_sublocation_div);
+  symptom_body_sublocation_div.appendChild(diagnosis_body_sublocation_div);
   if (data != null) {
     let delimiter = document.createElement("hr");
     delimiter.classList.add("delimiter");
@@ -70,7 +72,7 @@ async function getdiagnosis() {
         .querySelector("#diagnosis_body_sublocation_div")
         .appendChild(label);
     }
-    let script = document.createElement("script");
+    script = document.createElement("script");
     script.src = "symptoms/redflag_pacient.js";
     document.body.appendChild(script);
     script = document.createElement("script");

@@ -54,22 +54,6 @@ const issues = {
   },
 };
 
-const specialisations_diagnosis = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Host": "priaid-symptom-checker-v1.p.rapidapi.com",
-    "X-RapidAPI-Key": "08805db294msha9cd99bf0490bc9p1509f3jsnc510eeb10d9e",
-  },
-};
-
-const specialisations_list = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Host": "priaid-symptom-checker-v1.p.rapidapi.com",
-    "X-RapidAPI-Key": "08805db294msha9cd99bf0490bc9p1509f3jsnc510eeb10d9e",
-  },
-};
-
 const redflag_pacient = {
   method: "GET",
   headers: {
@@ -134,3 +118,22 @@ let issue;
 let result;
 let issue_info;
 let description;
+let chosen_body_sublocation;
+let chosen_symptom;
+let chosen_diagnosis;
+let chosen_issues;
+let chosen_more_diagnosis;
+let chosen_red;
+let big_div;
+let data;
+let history;
+let checked_body_sublocation;
+let checked_diagnosis;
+let checked_redflag;
+let checked_diagnosis_info;
+let checked_symptoms;
+let checked_issue;
+let script;
+let scripts;
+let id_;
+let data1;

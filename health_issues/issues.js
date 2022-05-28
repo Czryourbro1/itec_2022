@@ -1,9 +1,10 @@
 id_issues = [];
 input_issues = document.querySelectorAll("#more_diagnosis_body_sublocation");
-issues_body_sublocation_div = document.querySelector(".empty");
+description = document.querySelector(".empty");
 valstring3 = "";
 year_of_birth = document.querySelector(".year");
 gender = document.querySelector("#gender");
+scripts = document.querySelectorAll("script");
 
 for (let k = 0; k < input_issues.length; k++) {
   input_issues[k].addEventListener("click", function () {
@@ -13,23 +14,40 @@ for (let k = 0; k < input_issues.length; k++) {
       valstring3 = valstring3.replace(",", "%2C");
       console.log(valstring3);
       console.log(id_issues);
-
-      if (valstring3.length > 2) getissues();
-      for (let j = 0; j < input_issues.length; j++) {
-        if (k != j) input_issues[j].disabled = true;
+      chosen_issues = input_issues[k].name;
+      if (valstring3.length > 0) {
+        console.log("getissues()");
+        for (let i = 0; i < scripts.length; i++) {
+          if (
+            scripts[i].src ==
+            "http://127.0.0.1:5500/health_issues/issues_info.js"
+          ) {
+            console.log("instruuuu");
+            scripts[i].remove();
+          }
+          console.log(scripts[i].src);
+        }
+        getissues();
       }
     } else {
-      for (let q = 0; q < input_issues.length; q++) {
-        input_issues[q].disabled = false;
+      location.reload();
+      for (let i = 0; i < scripts.length; i++) {
+        if (
+          scripts[i].src == "http://127.0.0.1:5500/health_issues/issues_info.js"
+        ) {
+          console.log("instruuuu");
+          scripts[i].remove();
+          location.reload();
+        }
+        console.log(scripts[i].src);
       }
       id_issues = id_issues.filter((item) => item !== input_issues[k].value);
       console.log(id_issues);
-
       valstring3 = id_issues.toString();
       valstring3 = valstring3.replace(",", "%2C");
       console.log(valstring3);
-      if (valstring3.length > 2) getissues();
-      issues_body_sublocation_div.remove();
+      if (valstring3.length > 0) getissues();
+      description.remove();
       addempty();
     }
   });
@@ -41,13 +59,17 @@ async function getissues() {
   );
   console.log(gender.value);
   console.log(year_of_birth.value);
-  issues_body_sublocation_div.remove();
-  addempty();
   const data = await response.json();
   console.log(data);
   issue = data[0].ID;
-  let script = document.createElement("script");
-  script.src = "health_issues/issues_info.js";
-  script.setAttribute("type", "module");
-  document.body.appendChild(script);
+  console.log(issue);
+  import("./issues_info.js").then((module) => {
+    console.log(module.default());
+  });
+  //var getissuesinfo = require("./issues_info.js");
+  //getissuesinfo(issue);
+  //script = document.createElement("script");
+  //script.src = "health_issues/issues_info.js";
+  //document.body.appendChild(script);
+  scripts = document.querySelectorAll("script");
 }

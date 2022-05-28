@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-
 async function main() {
   await mongoose.connect(
     "mongodb+srv://Czryourbro:12345@cluster0.8efmu.mongodb.net/database?retryWrites=true&w=majority"
@@ -17,6 +16,16 @@ const accountSchema = new mongoose.Schema({
     type: String,
     required: [true, "Username is required"],
   },
+  diagnostic: {
+    type: Array,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  chosen_symptoms: {
+    type: Array,
+  },
 });
 
 const account = mongoose.model("account", accountSchema);
@@ -32,17 +41,19 @@ app.use(express.json());
 
 app.post("/register", async (req, res) => {
   let body = req.body;
+  let user;
   const salt = await bcrypt.genSalt(10);
   body.pass = await bcrypt.hash(body.pass, salt);
   console.log(body);
   try {
     const newAccount = new account(body);
     await newAccount.save();
+    user = await account.findOne({ email: body.email });
   } catch (error) {
     res.send("acest cont exista deja");
     return;
   }
-  res.send("contul a fost creat");
+  res.send(user._id);
 });
 
 app.post("/login", async (req, res) => {
@@ -59,6 +70,35 @@ app.post("/login", async (req, res) => {
   } else {
     res.send("User does not exist");
   }
+});
+
+app.post("/addsymptom", async (req, res) => {
+  const body = req.body;
+  const user = await account.findOne({ _id: body[0] });
+  console.log(body[0]);
+  for (let i = 1; i < body.length; i++) {
+    user.chosen_symptoms.push(body[i]);
+  }
+  user.date = Date.now();
+  await user.save();
+  res.send(user.chosen_symptoms);
+});
+
+app.post("/diagnostic", async (req, res) => {
+  const body = req.body;
+  const user = await account.findOne({ _id: body[0] });
+  console.log(body[0]);
+
+  user.diagnostic.push(body[1]);
+
+  await user.save();
+  res.send(user.diagnostic);
+});
+
+app.get("/history", async (req, res) => {
+  const history = await account.find();
+  console.log(history);
+  res.send(history);
 });
 
 app.listen(port, () => {

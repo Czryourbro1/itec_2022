@@ -2,7 +2,7 @@ let email = document.querySelector(".email");
 let pass = document.querySelector(".pass");
 let form = document.querySelector("form");
 let login = document.querySelector(".login");
-let register = document.querySelector(".register");
+let register = document.querySelector(".reg");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -12,9 +12,8 @@ form.addEventListener("submit", function (e) {
   console.log(data);
 
   async function f() {
-    let url = "http://localhost:3000/";
-    if (e.submitter == login) url += "login";
-    else url += "register";
+    let url = "http://localhost:3000/register";
+
     let valg = await fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
@@ -24,13 +23,10 @@ form.addEventListener("submit", function (e) {
     let val = await valg.text();
     console.log(val);
     alert(val);
-    if (
-      e.submitter == login &&
-      val != "Invalid Password" &&
-      val != "User does not exist"
-    ) {
-      localStorage.setItem("myid", val);
+    if (val != "acest cont exista deja") {
+      localStorage.setItem("myid", +val);
       localStorage.setItem("email", email.value);
+      location.href = "index.html";
     }
   }
   f();

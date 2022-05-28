@@ -25,11 +25,16 @@ for (let k = 0; k < input.length; k++) {
   input[k].addEventListener("click", function () {
     if (input[k].checked) {
       id = input[k].value;
+      chosen_body_sublocation = input[k].name;
       getBodySublocation();
       for (let j = 0; j < input.length; j++) {
         if (k != j) input[j].disabled = true;
       }
     } else {
+      //location.reload();
+      document
+        .querySelector("#body_sublocation_div")
+        .contentWindow.location.reload(true);
       for (let q = 0; q < input.length; q++) {
         input[q].disabled = false;
       }
@@ -68,7 +73,7 @@ async function getBodySublocation() {
       label.innerHTML = data[i].Name;
       document.querySelector("#body_sublocation_div").appendChild(label);
     }
-    let script = document.createElement("script");
+    script = document.createElement("script");
     script.src = "/symptoms/symptom_sublocation.js";
     document.body.appendChild(script);
   }
