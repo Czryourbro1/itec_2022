@@ -1,15 +1,20 @@
-const issues_info = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Host": "priaid-symptom-checker-v1.p.rapidapi.com",
-    "X-RapidAPI-Key": "08805db294msha9cd99bf0490bc9p1509f3jsnc510eeb10d9e",
-  },
-};
-
-fetch(
-  "https://priaid-symptom-checker-v1.p.rapidapi.com/issues/11/info?language=en-gb",
-  issues_info
-)
-  .then((response) => response.json())
-  .then((response) => console.log(response))
-  .catch((err) => console.error(err));
+year_of_birth = document.querySelector(".year");
+gender = document.querySelector("#gender");
+result = document.createElement("div");
+result.classList.add("result");
+document.body.appendChild(result);
+async function getissuesinfo() {
+  const response = await fetch(
+    `https://priaid-symptom-checker-v1.p.rapidapi.com/issues/${issue}/info?language=en-gb`,
+    issues_info
+  );
+  console.log(gender.value);
+  console.log(year_of_birth.value);
+  const data = await response.json();
+  console.log(data);
+  description = document.createElement("div");
+  description.classList.add("result");
+  description.innerHTML = data.Description;
+  result.appendChild(description);
+}
+getissuesinfo();

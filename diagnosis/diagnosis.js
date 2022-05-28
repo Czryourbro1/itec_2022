@@ -1,15 +1,79 @@
-const diagnosis = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Host": "priaid-symptom-checker-v1.p.rapidapi.com",
-    "X-RapidAPI-Key": "08805db294msha9cd99bf0490bc9p1509f3jsnc510eeb10d9e",
-  },
-};
+id_more_diagnosis = [];
+input_more_diagnosis = document.querySelectorAll("#diagnosis_body_sublocation");
+more_diagnosis_body_sublocation_div = document.querySelector(".empty");
+valstring2 = "";
+year_of_birth = document.querySelector(".year");
+gender = document.querySelector("#gender");
 
-fetch(
-  "https://priaid-symptom-checker-v1.p.rapidapi.com/diagnosis?gender=male&year_of_birth=1984&symptoms=%5B234%2C11%5D&language=en-gb",
-  diagnosis
-)
-  .then((response) => response.json())
-  .then((response) => console.log(response))
-  .catch((err) => console.error(err));
+for (let k = 0; k < input_more_diagnosis.length; k++) {
+  input_more_diagnosis[k].addEventListener("click", function () {
+    if (input_more_diagnosis[k].checked) {
+      id_more_diagnosis.push(input_more_diagnosis[k].value);
+      valstring2 = id_more_diagnosis.toString();
+      valstring2 = valstring2.replace(",", "%2C");
+      console.log(valstring2);
+      console.log(id_more_diagnosis);
+      if (valstring2.length > 2) getissues();
+    } else {
+      id_more_diagnosis = id_more_diagnosis.filter(
+        (item) => item !== input_more_diagnosis[k].value
+      );
+      console.log(id_more_diagnosis);
+
+      valstring2 = id_more_diagnosis.toString();
+      valstring2 = valstring2.replace(",", "%2C");
+      console.log(valstring2);
+      if (valstring2.length > 2) getissues();
+      more_diagnosis_body_sublocation_div.remove();
+      addempty();
+    }
+  });
+}
+async function getissues() {
+  const response = await fetch(
+    `https://priaid-symptom-checker-v1.p.rapidapi.com/diagnosis?gender=${gender.value}&year_of_birth=${year_of_birth.value}&language=en-gb&symptoms=%5B${valstring2}%5D`,
+    diagnosis
+  );
+  console.log(gender.value);
+  console.log(year_of_birth.value);
+  more_diagnosis_body_sublocation_div.remove();
+  addempty();
+  const data = await response.json();
+  console.log(data);
+  more_diagnosis_body_sublocation_div = document.createElement("div");
+  more_diagnosis_body_sublocation_div.setAttribute(
+    "id",
+    "more_diagnosis_body_sublocation_div"
+  );
+  diagnosis_body_sublocation_div.appendChild(
+    more_diagnosis_body_sublocation_div
+  );
+  if (data != null) {
+    let delimiter = document.createElement("hr");
+    delimiter.classList.add("delimiter");
+    document
+      .querySelector("#more_diagnosis_body_sublocation_div")
+      .appendChild(delimiter);
+    for (let i = 0; i < data.length; i++) {
+      let more_diagnosis_body_sublocation = document.createElement("input");
+      more_diagnosis_body_sublocation.setAttribute("class", "inputs");
+      more_diagnosis_body_sublocation.type = "checkbox";
+      more_diagnosis_body_sublocation.value = data[i].Issue.ID;
+      more_diagnosis_body_sublocation.name = data[i].Issue.IcdName;
+      more_diagnosis_body_sublocation.id = "more_diagnosis_body_sublocation";
+      more_diagnosis_body_sublocation.innerHTML = data[i].Issue.Name;
+      document
+        .querySelector("#more_diagnosis_body_sublocation_div")
+        .appendChild(more_diagnosis_body_sublocation);
+      let label = document.createElement("label");
+      label.setAttribute("for", "more_diagnosis_body_sublocation");
+      label.innerHTML = data[i].Issue.Name;
+      document
+        .querySelector("#more_diagnosis_body_sublocation_div")
+        .appendChild(label);
+    }
+    let script = document.createElement("script");
+    script.src = "health_issues/issues.js";
+    document.body.appendChild(script);
+  }
+}

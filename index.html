@@ -8,12 +8,19 @@
     <title>Document</title>
   </head>
   <body>
+    <input placeholder="year of birth" type="number" class="year" />
+    <select name="gender" id="gender" class="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <div class="empty"></div>
     <main id="body_sublocation_main">
       <input
         type="checkbox"
         name="body_location0"
         id="body_location"
         value="16"
+        class="inputs"
       />
       <label for="body_location0">Abdomen, pelvis and buttocks</label>
       <input
@@ -21,6 +28,7 @@
         name="body_location1"
         id="body_location"
         value="7"
+        class="inputs"
       />
       <label for="body_location1">Arms and shoulder</label>
       <input
@@ -28,6 +36,7 @@
         name="body_location2"
         id="body_location"
         value="15"
+        class="inputs"
       />
       <label for="body_location2">Chest and back</label>
       <input
@@ -35,6 +44,7 @@
         name="body_location3"
         id="body_location"
         value="6"
+        class="inputs"
       />
       <label for="body_location3">Head, throat and neck</label>
       <input
@@ -42,6 +52,7 @@
         name="body_location4"
         id="body_location"
         value="10"
+        class="inputs"
       />
       <label for="body_location4">Legs</label>
       <input
@@ -49,19 +60,12 @@
         name="body_location5"
         id="body_location"
         value="17"
+        class="inputs"
       />
       <label for="body_location5">Skin, joints and general</label>
     </main>
+    <script src="all_var_api.js"></script>
     <script src="/body_parts/body_location.js"></script>
     <script src="/body_parts/body_sublocation.js"></script>
-    <script src="/diagnosis/diagnosis.js"></script>
-    <script src="/diagnosis/proposed_symptoms.js"></script>
-    <script src="/health_issues/issues.js"></script>
-    <script src="/health_issues/issues_info.js"></script>
-    <script src="/specialisations/specialisations_diagnosis.js"></script>
-    <script src="/specialisations/specialisations_list.js"></script>
-    <script src="/symptoms/redflag_pacient.js"></script>
-    <script src="/symptoms/symptom_sublocation.js"></script>
-    <script src="/symptoms/symptoms.js"></script>
   </body>
 </html>

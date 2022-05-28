@@ -1,3 +1,30 @@
+.empty {
+  display: none;
+}
+.year {
+  display: inline-block;
+  width: 100px;
+  height: 20px;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+label,
+.inputs {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  padding: 10px 0;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background: transparent;
+}
+.delimiter {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
 * {
   margin: 0;
   padding: 0;
