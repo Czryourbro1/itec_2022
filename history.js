@@ -39,17 +39,3 @@ async function g() {
   alert(val);
 }
 g();
-
-async function h() {
-  let url = "http://localhost:3000/history";
-  let valg = await fetch(url, {
-    method: "GET",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" },
-    mode: "cors",
-  });
-  let val = await valg.text();
-  console.log(val);
-  alert(val);
-}
-h();

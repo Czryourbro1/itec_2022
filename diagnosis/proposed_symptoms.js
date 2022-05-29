@@ -15,16 +15,20 @@ for (let k = 0; k < inputdiagnosis.length; k++) {
       console.log(id_diagnosis);
       chosen_diagnosis = inputdiagnosis[k].textContent;
       if (valstring.length > 0) getdiagnosis();
+      for (let j = 0; j < inputdiagnosis.length; j++) {
+        if (k != j) inputdiagnosis[j].disabled = true;
+      }
     } else {
+      for (let q = 0; q < inputdiagnosis.length; q++) {
+        inputdiagnosis[q].disabled = false;
+      }
       id_diagnosis = id_diagnosis.filter(
         (item) => item !== inputdiagnosis[k].value
       );
       console.log(id_diagnosis);
-
       valstring = id_diagnosis.toString();
       valstring = valstring.replace(",", "%2C");
       console.log(valstring);
-      if (valstring.length > 0) getdiagnosis();
       //location.reload();
       diagnosis_body_sublocation_div.remove();
       addempty();

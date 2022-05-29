@@ -28,9 +28,15 @@ for (let k = 0; k < input_issues.length; k++) {
           console.log(scripts[i].src);
         }
         getissues();
+        for (let j = 0; j < input_issues.length; j++) {
+          if (k != j) input_issues[j].disabled = true;
+        }
       }
     } else {
       location.reload();
+      for (let q = 0; q < input_issues.length; q++) {
+        input_issues[q].disabled = false;
+      }
       for (let i = 0; i < scripts.length; i++) {
         if (
           scripts[i].src == "http://127.0.0.1:5500/health_issues/issues_info.js"

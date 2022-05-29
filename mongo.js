@@ -20,7 +20,7 @@ const accountSchema = new mongoose.Schema({
     type: Array,
   },
   date: {
-    type: Date,
+    type: Array,
     default: Date.now,
   },
   chosen_symptoms: {
@@ -79,7 +79,7 @@ app.post("/addsymptom", async (req, res) => {
   for (let i = 1; i < body.length; i++) {
     user.chosen_symptoms.push(body[i]);
   }
-  user.date = Date.now();
+  user.date.push(Date.now());
   await user.save();
   res.send(user.chosen_symptoms);
 });

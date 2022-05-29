@@ -4,23 +4,19 @@ red_body_sublocation_div = document.querySelector(".empty");
 console.log(inputred);
 for (let k = 0; k < inputred.length; k++) {
   inputred[k].addEventListener("click", function () {
-    for (let i = 0; i < inputred.length; i++) {
-      if (inputred[i].checked && inputred[i].name == "true") {
-        id_red = inputred[i].value;
-        getred();
-        for (let j = 0; j < inputred.length; j++) {
-          if (i != j) inputred[j].disabled = true;
-        }
-      } else {
-        //location.reload();
-        for (let q = 0; q < inputred.length; q++) {
-          if (inputred[q].checked) break;
-          else {
-            inputred[q].disabled = false;
-            red_body_sublocation_div.remove();
-          }
-        }
+    if (inputred[k].checked && inputred[k].name == "true") {
+      id_red = inputred[i].value;
+      getred();
+      for (let j = 0; j < inputred.length; j++) {
+        if (k != j) inputred[j].disabled = true;
       }
+    } else {
+      //location.reload();
+      for (let q = 0; q < inputred.length; q++) {
+        inputred[q].disabled = false;
+      }
+      red_body_sublocation_div.remove();
+      addempty();
     }
   });
 }

@@ -26,9 +26,15 @@ for (let k = 0; k < input_more_diagnosis.length; k++) {
           console.log(scripts[i].src);
         }
         getissues();
+        for (let j = 0; j < input_more_diagnosis.length; j++) {
+          if (k != j) input_more_diagnosis[j].disabled = true;
+        }
       }
     } else {
       location.reload();
+      for (let q = 0; q < input_more_diagnosis.length; q++) {
+        input_more_diagnosis[q].disabled = false;
+      }
       for (let i = 0; i < scripts.length; i++) {
         if (scripts[i].src == "http://127.0.0.1:5500/health_issues/issues.js") {
           console.log("instruuuu");
@@ -44,7 +50,6 @@ for (let k = 0; k < input_more_diagnosis.length; k++) {
       valstring2 = id_more_diagnosis.toString();
       valstring2 = valstring2.replace(",", "%2C");
       console.log(valstring2);
-      if (valstring2.length > 0) getissues();
       more_diagnosis_body_sublocation_div.remove();
       addempty();
     }
