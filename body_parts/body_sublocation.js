@@ -56,19 +56,20 @@ async function getBodySublocation() {
     document.querySelector("#body_sublocation_div").appendChild(delimiter);
     for (let i = 0; i < data.length; i++) {
       let body_sublocation = document.createElement("input");
+      div_tick = document.createElement("div");
+      div_tick.classList.add("tickboxes");
       body_sublocation.setAttribute("class", "inputs");
       body_sublocation.type = "checkbox";
       body_sublocation.value = data[i].ID;
       body_sublocation.name = "body_sublocation";
       body_sublocation.id = "body_sublocation";
       body_sublocation.innerHTML = data[i].Name;
-      document
-        .querySelector("#body_sublocation_div")
-        .appendChild(body_sublocation);
+      div_tick.appendChild(body_sublocation);
       let label = document.createElement("label");
       label.setAttribute("for", "body_sublocation");
       label.innerHTML = data[i].Name;
-      document.querySelector("#body_sublocation_div").appendChild(label);
+      div_tick.appendChild(label);
+      body_sublocation_div.appendChild(div_tick);
     }
     script = document.createElement("script");
     script.src = "/symptoms/symptom_sublocation.js";

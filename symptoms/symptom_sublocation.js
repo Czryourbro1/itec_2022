@@ -43,22 +43,21 @@ async function getsymptom() {
       .appendChild(delimiter);
     for (let i = 0; i < data.length; i++) {
       let symptom_body_sublocation = document.createElement("input");
+      let div_tick = document.createElement("div");
+      div_tick.classList.add("tickboxes");
       symptom_body_sublocation.setAttribute("class", "inputs");
       symptom_body_sublocation.type = "checkbox";
       symptom_body_sublocation.value = data[i].ID;
       symptom_body_sublocation.name = data[i].HasRedFlag;
       symptom_body_sublocation.id = "symptom_body_sublocation";
       symptom_body_sublocation.innerHTML = data[i].Name;
+      div_tick.appendChild(symptom_body_sublocation);
       console.log(data[i].Name);
-      document
-        .querySelector("#symptom_body_sublocation_div")
-        .appendChild(symptom_body_sublocation);
       let label = document.createElement("label");
       label.setAttribute("for", "symptom_body_sublocation");
       label.innerHTML = data[i].Name;
-      document
-        .querySelector("#symptom_body_sublocation_div")
-        .appendChild(label);
+      div_tick.appendChild(label);
+      symptom_body_sublocation_div.appendChild(div_tick);
     }
 
     script = document.createElement("script");

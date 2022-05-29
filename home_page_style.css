@@ -12,10 +12,12 @@
 body {
   background-image: url(RESOURCES/login_background.jpg);
   background-size: 100vw 100vh;
+  background-attachment: fixed;
 }
 
 #home_top_bar {
   position: fixed;
+  top: 0;
   background-color: #ff1a53;
   align-items: center;
   justify-content: space-between;
@@ -61,4 +63,38 @@ body {
 
 #home_button_div {
   white-space: nowrap;
+}
+
+.hah {
+  margin-left: 2vh;
+}
+
+.home_stage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 6vh;
+  width: 100%;
+  color: #ff1a53;
+  border-bottom: 5px dashed;
+  border-top: 5px dashed;
+  height: 10vh;
+  background-color: #ffffff;
+  margin-top: 10vh;
+}
+
+.home_description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #ffffff;
+  color: #ff1a53;
+  text-align: center;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  font-size: 4vh;
+  margin: 20vh;
+  margin-top: 30vh;
+  border: 3px dashed;
+  border-radius: 20px;
 }

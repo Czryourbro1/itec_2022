@@ -29,7 +29,7 @@ for (let k = 0; k < inputdiagnosis.length; k++) {
       valstring = id_diagnosis.toString();
       valstring = valstring.replace(",", "%2C");
       console.log(valstring);
-      //location.reload();
+      location.reload();
       diagnosis_body_sublocation_div.remove();
       addempty();
     }
@@ -60,21 +60,21 @@ async function getdiagnosis() {
       .appendChild(delimiter);
     for (let i = 0; i < data.length; i++) {
       let diagnosis_body_sublocation = document.createElement("input");
+      let div_tick = document.createElement("div");
+      div_tick.classList.add("tickboxes");
       diagnosis_body_sublocation.setAttribute("class", "inputs");
       diagnosis_body_sublocation.type = "checkbox";
       diagnosis_body_sublocation.value = data[i].ID;
       diagnosis_body_sublocation.name = data[i].HasRedFlag;
       diagnosis_body_sublocation.id = "diagnosis_body_sublocation";
       diagnosis_body_sublocation.innerHTML = data[i].Name;
-      document
-        .querySelector("#diagnosis_body_sublocation_div")
-        .appendChild(diagnosis_body_sublocation);
+      div_tick.appendChild(diagnosis_body_sublocation);
+
       let label = document.createElement("label");
       label.setAttribute("for", "diagnosis_body_sublocation");
       label.innerHTML = data[i].Name;
-      document
-        .querySelector("#diagnosis_body_sublocation_div")
-        .appendChild(label);
+      div_tick.appendChild(label);
+      diagnosis_body_sublocation_div.appendChild(div_tick);
     }
     script = document.createElement("script");
     script.src = "symptoms/redflag_pacient.js";

@@ -82,21 +82,21 @@ async function getissues() {
       .appendChild(delimiter);
     for (let i = 0; i < data.length; i++) {
       let more_diagnosis_body_sublocation = document.createElement("input");
+      let div_tick = document.createElement("div");
+      div_tick.classList.add("tickboxes");
       more_diagnosis_body_sublocation.setAttribute("class", "inputs");
       more_diagnosis_body_sublocation.type = "checkbox";
       more_diagnosis_body_sublocation.value = data[i].Issue.ID;
       more_diagnosis_body_sublocation.name = data[i].Issue.IcdName;
       more_diagnosis_body_sublocation.id = "more_diagnosis_body_sublocation";
       more_diagnosis_body_sublocation.innerHTML = data[i].Issue.Name;
-      document
-        .querySelector("#more_diagnosis_body_sublocation_div")
-        .appendChild(more_diagnosis_body_sublocation);
+      div_tick.appendChild(more_diagnosis_body_sublocation);
+
       let label = document.createElement("label");
       label.setAttribute("for", "more_diagnosis_body_sublocation");
       label.innerHTML = data[i].Issue.Name;
-      document
-        .querySelector("#more_diagnosis_body_sublocation_div")
-        .appendChild(label);
+      div_tick.appendChild(label);
+      more_diagnosis_body_sublocation_div.appendChild(div_tick);
     }
     script = document.createElement("script");
     script.src = "health_issues/issues.js";
