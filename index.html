@@ -4,71 +4,47 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="login_register_style.css" />
+    <title>Symptom Tracker - Register</title>
   </head>
   <body>
-    <div class="history"></div>
-    <input placeholder="year of birth" type="number" class="year" />
-    <select name="gender" id="gender" class="gender">
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
-    <div class="empty"></div>
-    <main id="body_sublocation_main">
-      <input
-        type="checkbox"
-        name="Abdomen, pelvis and buttocks"
-        id="body_location"
-        value="16"
-        class="inputs"
-      />
-      <label for="Abdomen, pelvis and buttocks"
-        >Abdomen, pelvis and buttocks</label
-      >
-      <input
-        type="checkbox"
-        name="Arms and shoulder"
-        id="body_location"
-        value="7"
-        class="inputs"
-      />
-      <label for="Arms and shoulder">Arms and shoulder</label>
-      <input
-        type="checkbox"
-        name="Chest and back"
-        id="body_location"
-        value="15"
-        class="inputs"
-      />
-      <label for="Chest and back">Chest and back</label>
-      <input
-        type="checkbox"
-        name="Head, throat and neck"
-        id="body_location"
-        value="6"
-        class="inputs"
-      />
-      <label for="Head, throat and neck">Head, throat and neck</label>
-      <input
-        type="checkbox"
-        name="Legs"
-        id="body_location"
-        value="10"
-        class="inputs"
-      />
-      <label for="Legs">Legs</label>
-      <input
-        type="checkbox"
-        name="Skin, joints and general"
-        id="body_location"
-        value="17"
-        class="inputs"
-      />
-      <label for="Skin, joints and general">Skin, joints and general</label>
-    </main>
-    <script src="all_var_api.js"></script>
-    <script src="/body_parts/body_location.js"></script>
-    <script src="/body_parts/body_sublocation.js"></script>
+    <form>
+      <div id="login_title">
+        + &nbsp; &nbsp; S y m p t o m &nbsp; &nbsp; T r a c k e r &nbsp; &nbsp;
+        +
+      </div>
+      <div id="login_quadrant">
+        <input
+          name="email"
+          type="text"
+          class="email"
+          id="login_email"
+          placeholder="Please introduce your Email address"
+        />
+        <input
+          placeholder="Please introduce your password"
+          name="pass"
+          type="password"
+          class="password"
+          id="login_password"
+        />
+        <input
+          id="login_login_button"
+          type="submit"
+          name="reg"
+          class="reg"
+          value="Register"
+        />
+        <a href="login.html" id="account_button"
+          >Already have an account? Click here!</a
+        >
+      </div>
+      <div id="login_motto">
+        F o r &nbsp; &nbsp; a &nbsp; &nbsp; h e a l t h i e r &nbsp; &nbsp; s e
+        l f
+      </div>
+    </form>
+    <script src="login_register_logic.js"></script>
+    <script src="register.js"></script>
   </body>
 </html>

@@ -7,6 +7,7 @@ let register = document.querySelector(".reg");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   console.log(e);
+
   let formdata = new FormData(e.target);
   let data = Object.fromEntries(formdata);
   console.log(data);
@@ -24,9 +25,9 @@ form.addEventListener("submit", function (e) {
     console.log(val);
     alert(val);
     if (val != "acest cont exista deja") {
-      localStorage.setItem("myid", +val);
+      localStorage.setItem("myid", val);
       localStorage.setItem("email", email.value);
-      location.href = "index.html";
+      location.href = "home_page.html";
     }
   }
   f();

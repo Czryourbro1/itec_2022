@@ -24,9 +24,9 @@ form.addEventListener("submit", function (e) {
     console.log(val);
     alert(val);
     if (val != "Invalid Password" && val != "User does not exist") {
-      localStorage.setItem("myid", +val);
+      localStorage.setItem("myid", val);
       localStorage.setItem("email", email.value);
-      location.href = "index.html";
+      location.href = "home_page.html";
     }
   }
   f();

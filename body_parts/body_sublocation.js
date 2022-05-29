@@ -31,10 +31,7 @@ for (let k = 0; k < input.length; k++) {
         if (k != j) input[j].disabled = true;
       }
     } else {
-      //location.reload();
-      document
-        .querySelector("#body_sublocation_div")
-        .contentWindow.location.reload(true);
+      location.reload();
       for (let q = 0; q < input.length; q++) {
         input[q].disabled = false;
       }

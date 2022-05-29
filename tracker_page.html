@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="tracker_page_style.css" />
+    <title>Symptom Tracker - Tracker</title>
+  </head>
+  <body>
+    <div id="tracker_top_bar">
+      <div id="tracker_buttons">
+        <a
+          href="home_page.html"
+          id="tracker_home_button"
+          class="tracker_top_bar_button"
+          >Home</a
+        >
+        <a
+          href="history_page.html"
+          id="tracker_history_button"
+          class="tracker_top_bar_button"
+          >Tracking History</a
+        >
+      </div>
+      <div id="tracker_title">Symptom Tracker</div>
+    </div>
+    <div id="where">Where does it hurt? Introduce your age to get started.</div>
+    <div id="year_and_gender">
+      <input placeholder="year of birth" type="number" class="year" />
+      <select name="gender" id="gender" class="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <div class="empty"></div>
+    <main id="body_sublocation_main">
+      <div class="tickbox">
+        <input
+          type="checkbox"
+          name="Abdomen, pelvis and buttocks"
+          id="body_location"
+          value="16"
+        />
+        <label for="Abdomen, pelvis and buttocks"
+          >Abdomen, pelvis and buttocks</label
+        >
+      </div>
+      <div class="tickbox">
+        <input
+          type="checkbox"
+          name="Arms and shoulder"
+          id="body_location"
+          value="7"
+        />
+        <label for="Arms and shoulder">Arms and shoulder</label>
+      </div>
+      <div class="tickbox">
+        <input
+          type="checkbox"
+          name="Chest and back"
+          id="body_location"
+          value="15"
+        />
+        <label for="Chest and back">Chest and back</label>
+      </div>
+      <div class="tickbox">
+        <input
+          type="checkbox"
+          name="Head, throat and neck"
+          id="body_location"
+          value="6"
+        />
+        <label for="Head, throat and neck">Head, throat and neck</label>
+      </div>
+      <div class="tickbox">
+        <input type="checkbox" name="Legs" id="body_location" value="10" />
+        <label for="Legs">Legs</label>
+      </div>
+      <div class="tickbox">
+        <input
+          type="checkbox"
+          name="Skin, joints and general"
+          id="body_location"
+          value="17"
+        />
+        <label for="Skin, joints and general">Skin, joints and general</label>
+      </div>
+      <div class="history"></div>
+    </main>
+    <script src="all_var_api.js"></script>
+    <script src="/body_parts/body_sublocation.js"></script>
+  </body>
+</html>

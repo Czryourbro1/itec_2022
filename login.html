@@ -4,22 +4,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="login_register_style.css" />
+    <title>Symptom Tracker - Login</title>
   </head>
   <body>
     <form>
-      <input name="email" type="text" class="email" placeholder="Email" />
-      <input
-        name="pass"
-        type="password"
-        class="password"
-        placeholder="Password"
-      />
-      <input type="submit" name="login" class="login" value="Login" />
-      <a href="register.html" class="reg"
-        >Dont have an account? Click here to make one</a
-      >
+      <div id="login_title">
+        + &nbsp; &nbsp; S y m p t o m &nbsp; &nbsp; T r a c k e r &nbsp; &nbsp;
+        +
+      </div>
+      <div id="login_quadrant">
+        <input
+          name="email"
+          type="text"
+          class="email"
+          id="login_email"
+          placeholder="Please introduce your Email address"
+        />
+
+        <input
+          placeholder="Please introduce your password"
+          name="pass"
+          type="password"
+          class="password"
+          id="login_password"
+        />
+
+        <input
+          type="submit"
+          name="login"
+          class="login"
+          value="Login"
+          id="login_login_button"
+        />
+        <a href="register.html" id="account_button"
+          >Haven't made an account yet? Click here!</a
+        >
+      </div>
+      <div id="login_motto">
+        F o r &nbsp; &nbsp; a &nbsp; &nbsp; s a f e r &nbsp; &nbsp; l i f e s t
+        y l e
+      </div>
     </form>
+    <script src="login_register_logic.js"></script>
     <script src="login.js"></script>
   </body>
 </html>

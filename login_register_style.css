@@ -1,0 +1,111 @@
+@font-face {
+  font-family: Raleway;
+  src: url(RESOURCES/Raleway-VariableFont_wght.ttf);
+}
+
+@keyframes fade_in {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+* {
+  font-family: Raleway;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url(RESOURCES/login_background.jpg);
+  background-size: 100vw 100vh;
+}
+
+label {
+  vertical-align: top;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+#login_dashboard_body {
+  background-color: #ffffff;
+}
+
+#login_quadrant {
+  background-color: #ff1a53;
+  border-radius: 19px;
+}
+
+.email {
+  color: black;
+  outline: none !important;
+  background-color: #ffffff;
+  border-radius: 23px;
+  border: 0;
+  transition: background-color 0.3s;
+}
+
+.email:focus {
+  background-color: #dddddd;
+}
+
+.password {
+  color: black;
+  outline: none !important;
+  background-color: #ffffff;
+  border-radius: 23px;
+  border: 0;
+  transition: background-color 0.3s;
+}
+
+.password:focus {
+  background-color: #dddddd;
+}
+
+.login_input_text:focus {
+  background-color: #dddddd;
+}
+
+#login_login_button {
+  background-color: #ff1a53;
+  border-radius: 19px;
+  border: 3px solid;
+  border-color: #ffffff;
+  color: #ffffff;
+  transition: background-color 0.2s;
+  transition: color 0.2s;
+}
+
+#login_login_button:hover {
+  background-color: #ffffff;
+  color: #ff1a53;
+}
+
+#login_login_button:active {
+  color: #000000;
+}
+
+#login_title {
+  color: #ff1a53;
+  white-space: nowrap;
+  animation-name: fade_in;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
+}
+
+#login_motto {
+  color: #ff1a53;
+  white-space: nowrap;
+  animation-name: fade_in;
+  animation-timing-function: ease-in;
+  animation-duration: 5s;
+}
+
+#account_button {
+  background: none;
+  border: 0;
+  color: #ffffff;
+}
